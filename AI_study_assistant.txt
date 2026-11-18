@@ -1,0 +1,36 @@
+import ollama
+
+print("**************************")
+print("       AI Study Assistant")
+print("**************************")
+
+topic = input("\nEnter a study topic: ")
+prompt = f"""
+You are an AI Study Assistant.
+
+for the topic: {topic}
+1. Explain the topic in Simple language
+2. Give 5 important points
+3. Give 5 practice questions
+
+Use clear headings and easy language.
+"""
+response = ollama.chat(
+    model = "llama3.2",
+    messages=[
+        {  
+           "role": "user",
+            "content":prompt
+         }
+      ]
+)
+
+print("\n============ Study Material ===============")
+print(response["message"]["content"])
+print("\n===========================================")
+print("Study material generated successfully!")
+
+	
+
+
+
